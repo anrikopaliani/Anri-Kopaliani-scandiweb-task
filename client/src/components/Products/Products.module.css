@@ -1,0 +1,36 @@
+.productsContainer {
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    padding-top: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.title {
+    text-transform: capitalize;
+}
+
+.products {
+    margin-top: 6%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
+
+@media(max-width: 1200px) {
+    .productsContainer {
+        margin-top: 30px;
+    }
+
+    .products {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .products {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,22 @@
+.linkStyle {
+    height: 10vh;
+    padding: 20px;
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    align-items: center;
+}
+
+.linkStyle:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .linkStyle {
+        font-size: 10px;
+    }
+}
+
+

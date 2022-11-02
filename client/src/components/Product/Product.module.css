@@ -1,0 +1,56 @@
+.product {
+    margin-top: 7%;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.images {
+    display: flex;
+    flex-direction: column;
+}
+
+.images img {
+    margin-top: 20px;
+}
+
+.images img:hover {
+    cursor: pointer;
+}
+
+.images img {
+    width: 100px;
+    height: 100px;
+}
+
+.selectedImage {
+    width: 600px;
+    height: 600px;
+}
+
+.price {
+    margin-top: 30px;
+    font-family: 'Roboto condensed', sans-serif;
+    font-weight: 700;
+}
+
+.submitBtn {
+    background: #5ECE7B;
+    padding: 20px 40px;
+    border: none;
+    color: #fff;
+    width: 300px;
+    height: 52px;
+    margin-top: 40px;
+}
+
+.submitBtn:hover {
+    cursor: pointer;
+}
+
+
+.description {
+    max-width: 400px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

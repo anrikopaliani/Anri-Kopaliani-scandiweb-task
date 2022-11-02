@@ -1,0 +1,73 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    align-items: center;
+}
+
+.container p {
+    padding: 10px 0;
+}
+
+.imgContainer {
+    display: flex;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.buttons button {
+        border: 1px solid black;
+        padding: 10px;
+        min-width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        font-size: 1.5rem;
+}
+
+.buttons button:hover {
+    cursor: pointer;
+}
+
+.img {
+    width: 200px;
+    height: 300px;
+}
+
+.horizontalLine {
+    width: 100%;
+    height: 2px;
+    background-color: #E5E5E5;
+    margin-top: 30px;
+}
+
+.slider {
+    position: relative;
+}
+
+.sliderButtonContainer {
+    position: absolute;
+    top: 90%;
+    left: 70%;
+}
+
+.sliderButtonContainer button {
+    background: rgba(0, 0, 0, 0.73);
+    width: 24px;
+    height: 24px;
+    border: none;
+}
+
+.sliderButtonContainer button:hover {
+    cursor: pointer;
+}
+
+.sliderButtonContainer button:not(:nth-child(2)) {
+    margin-right: 5px;
+}

@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    align-items: center;
+}
+
+.container div:not(:first-child) {
+    margin-left: 5px;
+}
+
+.colorContainer {
+    padding: 1px;
+}

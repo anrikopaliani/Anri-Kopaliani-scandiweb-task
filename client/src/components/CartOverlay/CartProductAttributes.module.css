@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+}
+
+.attribute{
+    border: 1px solid black;
+    padding: 10px;
+    min-width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.attribute:not(:first-child) {
+    margin-left: 5px;
+} 
