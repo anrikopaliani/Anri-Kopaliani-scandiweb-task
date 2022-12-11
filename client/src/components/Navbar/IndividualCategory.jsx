@@ -1,12 +1,12 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { Link } from "react-router-dom";
 import { storeContext } from "../../context/StoreContext";
 import styles from "./IndividualCategory.module.css";
 
-class IndividualCategory extends Component {
+class IndividualCategory extends PureComponent {
   render() {
     const { selectedCategory, changeCategory } = this.context;
-    const { category, closeOverlay } = this.props;
+    const { category } = this.props;
 
     return (
       <Link
@@ -15,8 +15,8 @@ class IndividualCategory extends Component {
         onClick={() => changeCategory(category)}
         style={
           selectedCategory === category
-            ? { color: "#5ECE7B", borderBottom: "2px solid #5ECE7B" }
-            : null
+            ? { color: "#5ECE7B", borderBottom: "1px solid #5ECE7B" }
+            : { borderBottom: "1px solid white" }
         }
       >
         {category}

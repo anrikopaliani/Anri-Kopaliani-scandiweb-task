@@ -1,26 +1,11 @@
-import React, { Component } from "react";
-import styles from "./CartOverlay.module.css";
+import { PureComponent } from "react";
 import { Link } from "react-router-dom";
-import { storeContext } from "../../context/StoreContext";
-import CartProduct from "./CartProduct";
+import styles from "./CartOverlay.module.css";
+import CartProductContainer from "./CartProductContainer";
 
-class CartOverlay extends Component {
+class CartOverlayPresentation extends PureComponent {
   render() {
-    const { closeOverlay } = this.props;
-    const { cart, selectedCurrency } = this.context;
-    // get the amount of products in the cart
-    const amount = cart.reduce((prev, curr) => {
-      return prev + curr.amount;
-    }, 0);
-
-    // calculate the total price
-    const price = cart.reduce((prev, curr) => {
-      const smth = curr.prices.find(
-        (price) => price.currency.symbol === selectedCurrency
-      );
-      return prev + curr.amount * smth.amount;
-    }, 0);
-
+    const { closeOverlay, amount, cart, selectedCurrency, price } = this.props;
     return (
       <div className={styles.modal}>
         <div className={styles.overlay} onClick={closeOverlay}></div>
@@ -32,7 +17,7 @@ class CartOverlay extends Component {
             <div>
               <div>
                 {cart.map((product) => (
-                  <CartProduct
+                  <CartProductContainer
                     selectedAttributes={product.selectedAttributes}
                     key={product.id}
                     product={product}
@@ -63,6 +48,4 @@ class CartOverlay extends Component {
   }
 }
 
-CartOverlay.contextType = storeContext;
-
-export default CartOverlay;
+export default CartOverlayPresentation;

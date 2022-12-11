@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
+import { v4 as uuidv4 } from "uuid";
 import styles from "./ColorAttributes.module.css";
 
-class ColorAttributes extends Component {
+class ColorAttributes extends PureComponent {
   render() {
     const { items, selected } = this.props;
     return (
@@ -15,7 +16,7 @@ class ColorAttributes extends Component {
                   : null
               }
               className={styles.colorContainer}
-              key={color.id}
+              key={uuidv4()}
             >
               <div
                 style={{

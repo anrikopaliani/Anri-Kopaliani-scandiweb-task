@@ -16,10 +16,11 @@
     display: flex;
     height: 100%;
     align-items: center;
+  
 }
 
 .greenLogo {
-    padding-right: 10%;
+    margin-right: 5%;
 }
 
 

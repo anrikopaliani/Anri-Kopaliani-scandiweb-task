@@ -1,22 +1,14 @@
-import React, { Component } from "react";
-import { storeContext } from "../../context/StoreContext";
-import logo from "../../images/a-logo.png";
-import cartLogo from "../../images/Vector.png";
+import { PureComponent } from "react";
 import CustomDropdown from "../CustomDropdown/CustomDropdown";
 import IndividualCategory from "./IndividualCategory";
 import styles from "./Navbar.module.css";
+import logo from "../../images/a-logo.png";
+import cartLogo from "../../images/Vector.png";
 
-class Navbar extends Component {
-  state = {
-    value: "$",
-  };
-
+class NavbarPresentation extends PureComponent {
   render() {
-    const { categories, currencies, cart } = this.context;
-    const { showOverlay, showCartOverlay } = this.props;
-    const amount = cart.reduce((prev, curr) => {
-      return prev + curr.amount;
-    }, 0);
+    const { showCartOverlay, showOverlay, categories, currencies, amount } =
+      this.props;
     return (
       <nav
         className={styles.navbar}
@@ -42,5 +34,4 @@ class Navbar extends Component {
   }
 }
 
-Navbar.contextType = storeContext;
-export default Navbar;
+export default NavbarPresentation;

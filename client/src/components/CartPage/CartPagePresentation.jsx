@@ -1,30 +1,18 @@
-import React, { Component } from "react";
+import { PureComponent } from "react";
 import styles from "./CartPage.module.css";
-import { storeContext } from "../../context/StoreContext";
-import SingleCartItem from "./SingleCartItem";
+import SingleCartItemContainer from "./SingleCartItemContainer";
 
-class CartPage extends Component {
+class CartPagePresentation extends PureComponent {
   render() {
-    const { cart, selectedCurrency } = this.context;
-    const quantity = cart.reduce((prev, curr) => {
-      return prev + curr.amount;
-    }, 0);
-
-    const price = cart.reduce((prev, curr) => {
-      const smth = curr.prices.find(
-        (price) => price.currency.symbol === selectedCurrency
-      );
-      return prev + curr.amount * smth.amount;
-    }, 0);
-
-    const tax = (price * 21) / 100;
-
+    const { cart, selectedCurrency, tax, quantity, price } = this.props;
     return (
       <div className={styles.cartPageContainer}>
         <h1>CART</h1>
         <div className={styles.horizontalLine}></div>
         {cart.map((cartItem) => {
-          return <SingleCartItem product={cartItem} key={cartItem.id} />;
+          return (
+            <SingleCartItemContainer product={cartItem} key={cartItem.id} />
+          );
         })}
         <div className={styles.amountDetail}>
           <div>
@@ -48,6 +36,4 @@ class CartPage extends Component {
   }
 }
 
-CartPage.contextType = storeContext;
-
-export default CartPage;
+export default CartPagePresentation;

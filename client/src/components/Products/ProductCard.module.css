@@ -1,6 +1,8 @@
 .container {
     width: 70%;
     height: 80%;
+    justify-self: center;
+    padding: 25px;
 }
 
 .container:hover {
@@ -38,8 +40,15 @@
 .header {  
     position: absolute;
     top: 50%;
-    left: 10%;
+    left: 20%;
     opacity: 0.5;
+    font-size: 25px;
+    color: #000;
+    text-decoration: none;
+}
+
+.header:hover {
+    cursor: pointer;
 }
 
 

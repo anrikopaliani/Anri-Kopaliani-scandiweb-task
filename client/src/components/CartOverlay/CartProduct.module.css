@@ -5,7 +5,7 @@
 }
 
 .cartProductContainer img {
-    width: 121px;
+    width: 110px;
     height: 190px;
 }
 
@@ -17,6 +17,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding-right: 10px;
 }
 
 .amount button {
@@ -40,5 +41,11 @@
 
 .imgContainer {
     display: flex;
-    /* padding-left: 20px; */
+    max-width: 110px;
+    /* height: 90px; */
+}
+
+.imgContainer  {
+    max-width: 100%;
+    height: auto; 
 }

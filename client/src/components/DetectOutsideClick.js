@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
 /**
  * Component that closes the dropdown if you click outside outside of it
  */
-export default class DetectOutsideClick extends Component {
+export default class DetectOutsideClick extends PureComponent {
   constructor(props) {
     super(props);
 

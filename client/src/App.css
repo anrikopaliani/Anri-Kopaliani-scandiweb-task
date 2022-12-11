@@ -8,10 +8,12 @@
 
 body {
   font-family: 'Raleway', sans-serif;
+  /* width: 1440px; */
+
 }
  
 .background {
   background-color: rgba(57, 55, 72, 0.22);
   position: absolute;
-  z-index: 999999999999999999999;
+  z-index: 3;
 } 

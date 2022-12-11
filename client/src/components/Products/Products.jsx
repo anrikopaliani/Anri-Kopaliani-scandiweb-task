@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { storeContext } from "../../context/StoreContext";
 import styles from "./Products.module.css";
-import ProductCard from "./ProductCard";
+import ProductCardContainer from "./ProductCardContainer";
 
-class Products extends Component {
+class Products extends PureComponent {
   render() {
     const { products, selectedCategory } = this.context;
     const filteredProduct = products.find(
@@ -16,7 +16,11 @@ class Products extends Component {
           <div className={styles.products}>
             {filteredProduct?.products?.map((product) => {
               return (
-                <ProductCard key={product.id} {...product} product={product} />
+                <ProductCardContainer
+                  key={product.id}
+                  {...product}
+                  product={product}
+                />
               );
             })}
           </div>

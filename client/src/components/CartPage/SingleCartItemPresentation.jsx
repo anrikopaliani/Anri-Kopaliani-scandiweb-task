@@ -1,45 +1,21 @@
-import React, { Component } from "react";
+import { PureComponent } from "react";
 import ColorAttributes from "../CartOverlay/ColorAttributes";
-import CardProductAttributes from "../CartOverlay/CartProductAttributes";
-import { storeContext } from "../../context/StoreContext";
+import CartProductAttributes from "../CartOverlay/CartProductAttributes";
 import styles from "./SingleCartItem.module.css";
 import arrowLeft from "../../images/arrowLeft.png";
 import arrowRight from "../../images/arrowRight.png";
 
-class SingleCartItem extends Component {
-  state = {
-    imageIndex: 0,
-  };
-
-  nextImage = () => {
-    const { product } = this.props;
-    this.setState((prevState) => {
-      return {
-        imageIndex: prevState.imageIndex + 1,
-      };
-    });
-    if (this.state.imageIndex > product.gallery.length - 2) {
-      this.setState({ imageIndex: 0 });
-    }
-  };
-
-  previousImage = () => {
-    const { product } = this.props;
-    if (this.state.imageIndex === 0) {
-      this.setState({ imageIndex: product.gallery.length - 1 });
-    } else {
-      this.setState((prevState) => ({ imageIndex: prevState.imageIndex - 1 }));
-    }
-  };
-
+class SingleCartItemPresentation extends PureComponent {
   render() {
-    const { product } = this.props;
-    const { increaseProductAmount, decreaseProductAmount, selectedCurrency } =
-      this.context;
-    const price = product?.prices?.find(
-      (price) => price.currency.symbol === selectedCurrency
-    );
-
+    const {
+      product,
+      price,
+      decreaseProductAmount,
+      increaseProductAmount,
+      imageIndex,
+      previousImage,
+      nextImage,
+    } = this.props;
     return (
       <>
         <section className={styles.container}>
@@ -65,7 +41,7 @@ class SingleCartItem extends Component {
                 ) : (
                   <div key={attribute.id}>
                     <p style={{ fontWeight: "bold" }}>{attribute.name}:</p>
-                    <CardProductAttributes
+                    <CartProductAttributes
                       selected={attr && attr.selected}
                       items={attribute.items}
                     />
@@ -89,15 +65,15 @@ class SingleCartItem extends Component {
             <div className={styles.slider}>
               <img
                 className={styles.img}
-                src={product.gallery[this.state.imageIndex]}
+                src={product.gallery[imageIndex]}
                 alt=""
               />
               {product.gallery.length > 1 && (
                 <div className={styles.sliderButtonContainer}>
-                  <button onClick={this.previousImage}>
+                  <button onClick={previousImage}>
                     <img src={arrowLeft} alt="" />
                   </button>
-                  <button onClick={this.nextImage}>
+                  <button onClick={nextImage}>
                     <img src={arrowRight} alt="" />
                   </button>
                 </div>
@@ -111,6 +87,4 @@ class SingleCartItem extends Component {
   }
 }
 
-SingleCartItem.contextType = storeContext;
-
-export default SingleCartItem;
+export default SingleCartItemPresentation;

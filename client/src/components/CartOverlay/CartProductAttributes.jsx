@@ -1,7 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
+import { v4 as uuidv4 } from "uuid";
 import styles from "./CartProductAttributes.module.css";
 
-class CartProductAttributes extends Component {
+class CartProductAttributes extends PureComponent {
   render() {
     const { items, selected } = this.props;
     const selectedAttributeStyle = { background: "black", color: "white" };
@@ -11,7 +12,7 @@ class CartProductAttributes extends Component {
           return (
             <div
               style={item.value === selected ? selectedAttributeStyle : null}
-              key={item.id}
+              key={uuidv4()}
               className={styles.attribute}
             >
               {item.value.startsWith("#") ? "" : item.value}

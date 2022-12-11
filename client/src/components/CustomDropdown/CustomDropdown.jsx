@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import { storeContext } from "../../context/StoreContext";
 import DetectOutsideClick from "../DetectOutsideClick";
 import styles from "./CustomDropdown.module.css";
 import arrowDown from "../../images/arrowDown.png";
 
-class CustomDropdown extends Component {
+class CustomDropdown extends PureComponent {
   state = {
     isDropdownOpen: false,
   };

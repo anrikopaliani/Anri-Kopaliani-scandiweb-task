@@ -1,6 +1,6 @@
 import { gql } from "graphql-request";
 
-export const query = gql`
+export const singleProductQuery = gql`
   query getProducts($id: String!) {
     product(id: $id) {
       name

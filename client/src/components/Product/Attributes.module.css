@@ -2,8 +2,6 @@
     width: 400px;
 }
 
-
-
 .attributeTitle {
     text-transform: uppercase;
     padding-top: 10%;
@@ -27,6 +25,8 @@
     border: 1px solid #1D1F22;
     width: 63px;
     height: 45px;
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -47,7 +47,12 @@
     padding: 2px;
 }
 
+.defaultBorder {
+    padding: 2px;
+}
+
 .selectedColorBorder button {
     display: flex;
     align-items: center;
 }
+

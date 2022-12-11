@@ -1,29 +1,22 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { request } from "graphql-request";
-import Navbar from "./components/Navbar/Navbar";
+import NavbarContainer from "./components/Navbar/NavbarContainer";
 import { storeContext } from "./context/StoreContext";
 import Products from "./components/Products/Products";
-import Product from "./components/Product/Product";
-import CartOverlay from "./components/CartOverlay/CartOverlay";
-import CartPage from "./components/CartPage/CartPage";
-import { query } from "./components/queries/categoriesQuery";
+import ProductContainer from "./components/Product/ProductContainer";
+import CartOverlayContainer from "./components/CartOverlay/CartOverlayContainer";
+import CartPageContainer from "./components/CartPage/CartPageContainer";
+import { getData } from "./components/util";
 
-class App extends Component {
+class App extends PureComponent {
   state = {
     showCartOverlay: false,
   };
 
   componentDidMount() {
     const { updateGlobalState } = this.context;
-    request("http://localhost:4000", query).then((data) => {
-      updateGlobalState({
-        categories: data.categories.map((item) => item.name),
-        products: data.categories,
-        currencies: data.currencies,
-      });
-    });
+    getData(updateGlobalState);
   }
 
   showOverlay = () => {
@@ -46,18 +39,21 @@ class App extends Component {
 
   render() {
     const { showCartOverlay } = this.state;
+
     return (
       <>
-        <Navbar
+        <NavbarContainer
           showOverlay={this.showOverlay}
           closeOverlay={this.closeOverlay}
           showCartOverlay={showCartOverlay}
         />
-        {showCartOverlay && <CartOverlay closeOverlay={this.closeOverlay} />}
+        {showCartOverlay && (
+          <CartOverlayContainer closeOverlay={this.closeOverlay} />
+        )}
         <Routes>
           <Route path="/" element={<Products />} />
-          <Route path="/product/:id" element={<Product />} />
-          <Route path="/cart" element={<CartPage />} />
+          <Route path="/product/:id" element={<ProductContainer />} />
+          <Route path="/cart" element={<CartPageContainer />} />
         </Routes>
       </>
     );

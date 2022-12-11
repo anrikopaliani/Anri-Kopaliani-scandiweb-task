@@ -1,45 +1,18 @@
-import React, { Component } from "react";
-import { storeContext } from "../../context/StoreContext";
+import { PureComponent } from "react";
 import styles from "./CartProduct.module.css";
 import CartProductAttributes from "./CartProductAttributes";
 import ColorAttributes from "./ColorAttributes";
 
-class CardProduct extends Component {
-  state = {
-    amount: this.props.product.amount,
-  };
-
-  increaseAmount = (id) => {
-    const { increaseProductAmount } = this.context;
-    increaseProductAmount(id);
-    this.setState((prevState) => {
-      return {
-        ...prevState,
-        amount: prevState.amount + 1,
-      };
-    });
-  };
-
-  decreaseAmount = (id) => {
-    const { decreaseProductAmount } = this.context;
-    decreaseProductAmount(id);
-    this.setState((prevState) => {
-      return {
-        ...prevState,
-        amount: prevState.amount - 1,
-      };
-    });
-  };
-
+class CartProductPresentation extends PureComponent {
   render() {
-    const { selectedAttributes, product } = this.props;
-    const { amount } = this.state;
-    const { selectedCurrency } = this.context;
-
-    const price = product?.prices?.find(
-      (price) => price.currency.symbol === selectedCurrency
-    );
-
+    const {
+      product,
+      price,
+      selectedAttributes,
+      decreaseAmount,
+      increaseAmount,
+      amount,
+    } = this.props;
     return (
       <div className={styles.cartProductContainer}>
         <div className={styles.productDetails}>
@@ -74,9 +47,9 @@ class CardProduct extends Component {
         </div>
         <div className={styles.imgContainer}>
           <div className={styles.amount}>
-            <button onClick={() => this.increaseAmount(product.id)}>+</button>
+            <button onClick={() => increaseAmount(product.id)}>+</button>
             <h1 style={{ textAlign: "center" }}>{amount}</h1>
-            <button onClick={() => this.decreaseAmount(product.id)}>-</button>
+            <button onClick={() => decreaseAmount(product.id)}>-</button>
           </div>
           <img src={product.gallery[0]} alt="" />
         </div>
@@ -85,6 +58,4 @@ class CardProduct extends Component {
   }
 }
 
-CardProduct.contextType = storeContext;
-
-export default CardProduct;
+export default CartProductPresentation;

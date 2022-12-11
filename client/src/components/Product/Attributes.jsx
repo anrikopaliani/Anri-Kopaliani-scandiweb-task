@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import styles from "./Attributes.module.css";
 
-class Attributes extends Component {
+class Attributes extends PureComponent {
   state = {
     selected: "",
   };
@@ -15,49 +15,46 @@ class Attributes extends Component {
   render() {
     const { attribute } = this.props;
     const { selected } = this.state;
+
+    const renderAttributes = () => {
+      return attribute?.items.map((item) => (
+        <div
+          className={styles.selectedColorBorder}
+          key={item.id}
+          style={
+            attribute.type === "swatch" && item.value === selected
+              ? { border: "1px solid #5ECE7B" }
+              : { border: "1px solid transparent" }
+          }
+        >
+          <button
+            type="button"
+            style={
+              attribute.type === "swatch"
+                ? {
+                    backgroundColor: item.value,
+                    border: "none",
+                  }
+                : !item.value.startsWith("#") && item.value === selected
+                ? { backgroundColor: "black", color: "white" }
+                : null
+            }
+            onClick={this.handleClick}
+            name={attribute.name}
+            key={item.id}
+            value={item.value}
+          >
+            {!item.value.startsWith("#") && item.value}
+          </button>
+        </div>
+      ));
+    };
+
     return (
       <>
         <div className={styles.attributes}>
           <h4 className={styles.attributeTitle}>{attribute.name}: </h4>
-          <div className={styles.attributesContainer}>
-            {attribute?.items.map((item) => {
-              return (
-                <div
-                  className={
-                    attribute.type === "swatch" && item.value === selected
-                      ? styles.selectedColorBorder
-                      : ""
-                  }
-                  key={item.id}
-                  style={
-                    attribute.type === "swatch" && item.value === selected
-                      ? { border: "1px solid #5ECE7B" }
-                      : null
-                  }
-                >
-                  <button
-                    type="button"
-                    style={
-                      attribute.type === "swatch"
-                        ? {
-                            backgroundColor: item.value,
-                            border: "none",
-                          }
-                        : !item.value.startsWith("#") && item.value === selected
-                        ? { backgroundColor: "black", color: "white" }
-                        : null
-                    }
-                    onClick={this.handleClick}
-                    name={attribute.name}
-                    key={item.id}
-                    value={item.value}
-                  >
-                    {!item.value.startsWith("#") && item.value}
-                  </button>
-                </div>
-              );
-            })}
-          </div>
+          <div className={styles.attributesContainer}>{renderAttributes()}</div>
         </div>
       </>
     );
