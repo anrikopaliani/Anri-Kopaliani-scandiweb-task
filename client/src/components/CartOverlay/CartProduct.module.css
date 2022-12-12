@@ -41,11 +41,12 @@
 
 .imgContainer {
     display: flex;
-    max-width: 110px;
-    /* height: 90px; */
+    max-width: 100%;
+    height: 190px;
 }
 
-.imgContainer  {
+.imgContainer  img {
     max-width: 100%;
     height: auto; 
 }
+
